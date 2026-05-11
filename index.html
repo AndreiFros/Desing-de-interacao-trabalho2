@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Site da disciplina de Interface Web com os trabalhos do semestre.">
+  <title>Interface Web | Apresentação</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
+  <script src="components.js" defer></script>
+</head>
+<body>
+  <div class="estrutura-site">
+
+    <site-header subtitulo="Portfólio de trabalhos desenvolvidos ao longo do semestre"></site-header>
+    <site-nav ativo="inicio"></site-nav>
+
+    <main class="conteudo-site">
+      <div class="container py-4 py-md-5">
+        <section class="cartao-info mb-4">
+          <h2>Apresentação do site</h2>
+          <p>
+            Este site reúne os trabalhos da disciplina de Interface Web. A cada nova atividade,
+            uma nova página será adicionada para documentar o processo de desenvolvimento,
+            as decisões de design e o resultado final de cada entrega.
+          </p>
+        </section>
+
+        <section class="row g-4">
+          <div class="col-12 col-lg-6">
+            <article class="cartao-info h-100">
+              <h2>Objetivo</h2>
+              <p>
+                Organizar os projetos em um espaço único, com navegação clara e layout consistente,
+                para facilitar a visualização da evolução dos trabalhos durante o semestre.
+              </p>
+              <figure class="figura-personalizada">
+                <img
+                  src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
+                  alt="Mesa com notebook aberto e caderno de anotações para estudo web"
+                  class="img-fluid rounded-3"
+                >
+                <figcaption>Planejamento e organização do desenvolvimento web.</figcaption>
+              </figure>
+            </article>
+          </div>
+
+          <div class="col-12 col-lg-6">
+            <article class="cartao-info h-100">
+              <h2>Estrutura do conteúdo</h2>
+              <p>
+                O menu superior contém atalhos para todas as páginas de trabalhos.
+                Cada trabalho é desenvolvido com foco em boas práticas de HTML, CSS e JavaScript.
+              </p>
+              <figure class="figura-personalizada">
+                <img
+                  src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
+                  alt="Código em tela representando desenvolvimento de páginas web"
+                  class="img-fluid rounded-3"
+                >
+                <figcaption>Navegação e evolução contínua do portfólio da disciplina.</figcaption>
+              </figure>
+            </article>
+          </div>
+        </section>
+
+        <section class="cartao-info mt-4">
+          <h2>Recursos utilizados neste trabalho</h2>
+          <card-destaque>
+            <span slot="icone">&#x1F9E9;</span>
+            <span slot="titulo">Web Components com template e slot</span>
+            <span slot="descricao">
+              Header, nav e footer são web components reutilizados em todas as páginas.
+              Este card usa &lt;template&gt; e &lt;slot&gt; conforme exigido pelo enunciado.
+            </span>
+          </card-destaque>
+        </section>
+      </div>
+    </main>
+
+    <site-footer>Interface Web - 3&#xBA; semestre | P&#xE1;gina de apresenta&#xE7;&#xE3;o do portf&#xF3;lio</site-footer>
+
+  </div>
+
+  <template id="template-card-destaque">
+    <style>
+      .card-destaque {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1rem;
+        border: 2px solid #2f5d91;
+        border-radius: 6px;
+        background: #eef4ff;
+        margin-top: 0.5rem;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .icone { font-size: 2rem; flex-shrink: 0; }
+      .texto h3 { margin: 0 0 0.3rem; color: #2f5d91; font-size: 1.1rem; }
+      .texto p  { margin: 0; font-size: 0.95rem; color: #333; }
+    </style>
+    <div class="card-destaque">
+      <div class="icone"><slot name="icone">&#x2B50;</slot></div>
+      <div class="texto">
+        <h3><slot name="titulo">T&#xED;tulo</slot></h3>
+        <p><slot name="descricao">Descri&#xE7;&#xE3;o do recurso.</slot></p>
+      </div>
+    </div>
+  </template>
+
+  <script>
+    class CardDestaque extends HTMLElement {
+      constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+        const template = document.getElementById('template-card-destaque');
+        this.shadowRoot.appendChild(template.content.cloneNode(true));
+      }
+    }
+    customElements.define('card-destaque', CardDestaque);
+  </script>
+</body>
+</html>

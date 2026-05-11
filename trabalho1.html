@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Editor online de cartões - Trabalho 1 da disciplina de Interface Web.">
+  <title>Interface Web | Trabalho 1</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
+  <script src="components.js" defer></script>
+</head>
+<body>
+  <div class="estrutura-site">
+
+    <site-header subtitulo="Editor de cartões online - Trabalho 1"></site-header>
+    <site-nav ativo="trabalho1"></site-nav>
+
+    <main class="conteudo-site">
+      <div class="container py-4 py-md-5">
+        <section class="cartao-info mb-4">
+          <h2>Editor de cartões</h2>
+          <p>
+            Preencha os campos do formulário para personalizar o cartão em tempo real.
+            As entradas possuem limites e validações para evitar erros e manter o layout responsivo.
+          </p>
+        </section>
+
+        <section class="row g-4 align-items-start">
+          <div class="col-12 col-xl-5">
+            <form id="editor-form" class="cartao-info formulario-editor" novalidate>
+              <fieldset>
+                <legend class="titulo-legenda">Conteúdo principal</legend>
+
+                <div class="mb-3">
+                  <label for="ocasiao" class="form-label">Tipo de cartão</label>
+                  <select id="ocasiao" class="form-select" required>
+                    <option value="" selected>Selecione uma opção</option>
+                    <option value="Aniversário">Aniversário</option>
+                    <option value="Natal">Natal</option>
+                    <option value="Páscoa">Páscoa</option>
+                    <option value="Agradecimento">Agradecimento</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label for="textoTitulo" class="form-label">Título (até 40 caracteres)</label>
+                  <input id="textoTitulo" class="form-control" type="text" maxlength="40" required value="Feliz Dia Especial!">
+                </div>
+
+                <div class="mb-3">
+                  <label for="textoMensagem" class="form-label">Mensagem (até 180 caracteres)</label>
+                  <textarea id="textoMensagem" class="form-control" rows="4" maxlength="180" required>Que seu dia seja cheio de alegria, carinho e momentos inesquecíveis.</textarea>
+                </div>
+
+                <div class="mb-3">
+                  <label for="textoAssinatura" class="form-label">Assinatura (até 30 caracteres)</label>
+                  <input id="textoAssinatura" class="form-control" type="text" maxlength="30" value="Com carinho, sua turma.">
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend class="titulo-legenda">Visual do cartão</legend>
+                <div class="row g-3">
+                  <div class="col-12 col-md-6">
+                    <label for="corFundo" class="form-label">Cor de fundo</label>
+                    <input id="corFundo" class="form-control form-control-color" type="color" value="#fff7d6" aria-label="Selecionar cor de fundo">
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="corDestaque" class="form-label">Cor de destaque</label>
+                    <input id="corDestaque" class="form-control form-control-color" type="color" value="#e56b6f" aria-label="Selecionar cor de destaque">
+                  </div>
+                  <div class="col-12">
+                    <label for="imagemArquivo" class="form-label">Imagem do cartão</label>
+                    <input id="imagemArquivo" class="form-control" type="file" accept="image/*" aria-label="Selecionar imagem para o cartão">
+                    <small class="status-text">Formatos aceitos: JPG, PNG, GIF e WEBP.</small>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+
+          <div class="col-12 col-xl-7">
+            <section class="cartao-info">
+              <h2 class="titulo-previa">Pré-visualização</h2>
+              <div class="area-previa">
+                <article id="previaCartao" class="cartao-previa" aria-label="Pré-visualização do cartão">
+                  <p class="tipo-ocasiao" id="ocasiaoCartao">Aniversário</p>
+                  <h3 id="tituloCartao">Feliz Dia Especial!</h3>
+                  <img id="imagemCartao" class="imagem-cartao" alt="Imagem escolhida para o cartão" hidden>
+                  <p id="mensagemCartao" class="texto-mensagem">Que seu dia seja cheio de alegria, carinho e momentos inesquecíveis.</p>
+                  <p id="assinaturaCartao" class="texto-assinatura">Com carinho, sua turma.</p>
+                </article>
+              </div>
+            </section>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <site-footer>Interface Web - 3&#xBA; semestre | Trabalho 1: Editor de cart&#xF5;es online</site-footer>
+
+  </div>
+
+  <script src="EditorDeCartoes.js" defer></script>
+</body>
+</html>
